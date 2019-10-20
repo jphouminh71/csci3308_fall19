@@ -1,5 +1,7 @@
 # Version Control/How to branch
 
+**Note:** I did not use git remote, the steps below were followed and no merge conflicts happened.
+
 First change to a folder where you want to stage repo folder
 > cd directoryPath
 
