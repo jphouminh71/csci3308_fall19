@@ -1,5 +1,4 @@
-## How to branch
-**Open Repo on terminal**
+# How to branch
 
 First change to a folder where you want to stage repo folder
 > cd directoryPath
