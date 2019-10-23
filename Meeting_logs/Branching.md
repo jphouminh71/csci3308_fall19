@@ -31,6 +31,7 @@ Push to new branch
 
 Merge to master
 > git checkout master
+
 > git merge newBranch
 
 Delete new branch
