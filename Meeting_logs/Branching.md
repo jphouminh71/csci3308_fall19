@@ -23,7 +23,9 @@ Change to new branch
 
 Make changes
 > git add . OR git add <files changed>
+  
 > ...make file changes...
+  
 > git commit -m "message about what changes were made"
 
 Push to new branch
