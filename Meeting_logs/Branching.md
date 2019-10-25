@@ -42,3 +42,5 @@ OR
 > git branch -D newBranch
 
 * -d is normal delete, -D is force delete. Try -d first.
+
+Note: if one is ahead of the other.. try "git push origin"
