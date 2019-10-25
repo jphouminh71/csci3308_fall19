@@ -1,7 +1,19 @@
 const router = require('express').Router();
 
-router.post('./register', (req, res) => {
-    res.send('Register test');
+router.get('/users', (req, res) => {
+    res.send({type: 'GET'});
+});
+
+router.post('/users', (req, res) => {
+    res.send({type: 'POST'});
+});
+
+router.delete('/users', (req, res) => {
+    res.send({type: 'DEL'});
+});
+
+router.put('/users', (req, res) => {
+    res.send({type: 'PUT'});
 });
 
 module.exports = router;
