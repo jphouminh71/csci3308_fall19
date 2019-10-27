@@ -1,18 +1,35 @@
 const router = require('express').Router();
+const User = require('../models/User.js');
+const { registerValidation } = require('./validation.js');
 
+//get list of users
 router.get('/users', (req, res) => {
     res.send({type: 'GET'});
 });
 
-router.post('/users', (req, res) => {
-    res.send({type: 'POST'});
+//add new user
+router.post('/users', async(req, res) => {
+
+    const {error} = registerValidation(req.body);
+    if (error)
+        return res.status(400).send(error.details[0].message);
+    // res.send({type: 'POST'});
+
+    const emailExist = await User.findOne({ email: req.body.email });
+    if(emailExist) return res.status(400).send('Email already exists');
+
+    User.create(req.body).then(function(user) {
+        res.send(user);
+    });
 });
 
-router.delete('/users', (req, res) => {
+//remove user from db
+router.delete('/users/:id', (req, res) => {
     res.send({type: 'DEL'});
 });
 
-router.put('/users', (req, res) => {
+//update a user in db
+router.put('/users:id', (req, res) => {
     res.send({type: 'PUT'});
 });
 
