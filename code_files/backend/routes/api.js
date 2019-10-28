@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User.js');
-const { registerValidation } = require('./validation.js');
+const { registerValidation, loginValidation } = require('./validation.js');
 
 //get list of users
 router.get('/users', (req, res) => {
@@ -8,7 +8,7 @@ router.get('/users', (req, res) => {
 });
 
 //add new user
-router.post('/users', async(req, res) => {
+router.post('/register', async(req, res) => {
 
     const {error} = registerValidation(req.body);
     if (error)
@@ -21,6 +21,20 @@ router.post('/users', async(req, res) => {
     User.create(req.body).then(function(user) {
         res.send(user);
     });
+});
+
+router.post('/login', (req, res) => {
+    const {error} = loginValidation(req.body);
+    if (error)
+        return res.status(400).send(error.details[0].message);
+
+    const email = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ username: req.body.username })
+    if(!user) 
+        return res.status(400).send('Email/PW Incorrect');
+
+    res.send('Logged In');
+    
 });
 
 //remove user from db
