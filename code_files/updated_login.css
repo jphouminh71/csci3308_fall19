@@ -1,0 +1,13 @@
+head, body{
+  font-family: 'Varela Round', impact;
+}
+button{
+  background-color: blue;
+  color: white;
+  padding: 20px 20px;
+  margin: 8px 0;
+}
+
+button:hover{
+  opacity: 0.8;
+}
