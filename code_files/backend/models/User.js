@@ -25,13 +25,13 @@ const userSchema = new mongoose.Schema({
     },
     height: {
       type: String,
-      required: true,
+      required: false, //for now
       max: 10,
       min: 2
     },
     weight: {
       type: String,
-      required: true,
+      required: false, //for now
       max: 4,
       min: 2
     }

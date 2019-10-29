@@ -17,13 +17,13 @@ router.post('/register', async(req, res) => {
 
     const emailExist = await User.findOne({ email: req.body.email });
     if(emailExist) return res.status(400).send('Email already exists');
-
+    console.log(req.body);
     User.create(req.body).then(function(user) {
         res.send(user);
     });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', async(req, res) => {
     const {error} = loginValidation(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
