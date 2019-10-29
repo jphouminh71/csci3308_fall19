@@ -22,6 +22,18 @@ const userSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    height: {
+      type: String,
+      required: true,
+      max: 10,
+      min: 2
+    },
+    weight: {
+      type: String,
+      required: true,
+      max: 4,
+      min: 2
     }
 });
 
