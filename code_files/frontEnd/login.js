@@ -86,5 +86,12 @@ function enableButton(letter, capital, number, length, match) {
 
 
 function onClickFunction() {
-    alert("Hey! I'm all green! Well done.")
+    var email = document.getElementById('email').value;
+    var user = document.getElementById('user').value;
+    var psw = document.getElementById('psw').value;
+
+    var text = '{ "username":'+ user + ', "email":' + email + ', "password":'+ psw +'  }';
+    console.log(text);
+
+    alert("User created!")
 }
