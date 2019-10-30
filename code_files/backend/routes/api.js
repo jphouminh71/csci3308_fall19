@@ -17,9 +17,9 @@ router.post('/register', async(req, res) => {
 
     const emailExist = await User.findOne({ email: req.body.email });
     if(emailExist) return res.status(400).send('Email already exists');
-    console.log(req.body);
+    // console.log(req.body);
     User.create(req.body).then(function(user) {
-        res.send(user);
+        res.redirect('/');
     });
 });
 
