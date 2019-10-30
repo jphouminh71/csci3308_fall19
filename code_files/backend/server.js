@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../frontEnd')));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontEnd/welcomepage.html'));
+    res.sendFile(path.join(__dirname, '../frontEnd/index.html'));
 });
 
 
