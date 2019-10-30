@@ -39,7 +39,10 @@ router.post('/login', async(req, res) => {
 
 //remove user from db
 router.delete('/users/:id', (req, res) => {
-    res.send({type: 'DEL'});
+    console.log('Deleting: ' + req.params.id);
+    User.findOneAndDelete({username: req.params.id}).then(function(user) {
+        res.send('Deleted: ' + user);
+    }).catch(err => res.status(400).send(err));
 });
 
 //update a user in db
