@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="formCSS.css">
+</head>
+  <div class="container">  
+    <h1 style = "text-align:center"> Fit Track User Info Page </h1>
+  </div>
+    <form id="user_info" method="post" action="http://localhost:5000/api/register">
+      <h3>Information Form</h3>
+      <fieldset>
+        <input placeholder="Full Name" type="text" id="fname" tabindex="1" required autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Height in Centimeters" type="number" id="height" tabindex="2" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Weight in Pounds" type="number" id="weight" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Bench Press" type="number" id="bench" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <textarea placeholder="Goals" type="textarea" id="goals" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <button name="Update" type="submit" value="sumbit" id="user-submit" onclick="insert()" /></button>
+      </fieldset>
+    </form>
+  </div>
+</html>
