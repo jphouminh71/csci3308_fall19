@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tableFixHead          { overflow-y: auto; height: 200px; }
+    .tableFixHead thead th { position: sticky; top: 0; }
+
+    table  { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px 16px; }
+    th     { background:#eee; }
+    div.main, div.tabs { float: left; }
+    div.container { overflow: hidden; }
+
+    .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/mountain.jpeg");
+        height: 25%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .hero-text {
+        text-align: left;
+        position: absolute;
+        top: 60%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        color: rgba(255, 255, 255, 0.726);
+    }
+
+</style>
+<title>Dashboard</title>
+
+</head>
+
+<body>
+    <div class="hero-image">
+        <p class="hero-text display-1">Dashboard</p>
+    </div> 
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <img src="./images/login_logo.png" alt="John">
+                <h1 name="name">John Doe</h1>
+                <!-- <p class="title" id="">title</p> -->
+                <p style="width: 225px">About me</p>
+                <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
+                <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
+                <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
+                <br>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                    Edit about me
+                </button>
+                <form method="PUT">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Bio:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea class="form-control" name="bio"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tableFixHead">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr><th>Exercises</th><th>Current best</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A1</td><td>A2</td></tr>
+                    <tr><td>B1</td><td>B2</td></tr>
+                    <tr><td>C1</td><td>C2</td></tr>
+                    <tr><td>D1</td><td>D2</td></tr>
+                    <tr><td>E1</td><td>E2</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+          
+    <!-- </div> -->
+</body>
+
+</html> 
