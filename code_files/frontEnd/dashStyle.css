@@ -7,13 +7,13 @@ body, html {
 #wrapper {
 width: 20000px;
 height: 1000px;
-overflow: hidden; will contain if #first is longer than #second
+overflow: hidden;
 }
 #first {
-    float:left; /* add this */
+    float:left;
 }
 #second {
-    overflow: hidden; /* if you don't want #second to wrap below #first */
+    overflow: hidden;
 }
 
 .tableFixHead          { overflow-y: auto; height: 200px; }

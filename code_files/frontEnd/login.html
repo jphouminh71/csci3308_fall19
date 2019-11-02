@@ -20,18 +20,18 @@
   </head>
   <body>
     <div class="container">
-        <form class="form-group" method="GET" action="SentToNextPage.html" method="post"> <!--I think the action part sends the user to the next page -->
+        <form class="form-group" id="signin" method="POST" action="http://localhost:5000/api/signin"> <!--I think the action part sends the user to the next page -->
           <div class="form group">
             <p style = "text-align:center"> <!-- Username to save to DB -->
               <label> Username </label>
-              <input type="text" placeholder="Enter Username" id = "user"> </input>
+              <input type="text" placeholder="Enter Username" id = "user" name="username"> </input>
             </p>
             <p style = "text-align:center">
               <label> Password </label> <!-- Password to save to DB-->
-              <input type = "password" placeholder="Enter Password" id = "pswd"> </input>
+              <input type = "password" placeholder="Enter Password" id = "pswd" name="password"> </input>
             </p>
             <p style = "text-align:center"> <!-- The actual login button -->
-              <button class = "btn btn-info" type="submit" name="Submit">Log In</button>
+              <button class = "btn btn-info" type="submit" form="signin" name="Submit">Log In</button>
               <a href="#myModal" class="btn btn-info" data-toggle="modal" onclick="openModal()">Sign Up</a>
             </p>
             <div class="form-check" style = "text-align:center"> <!-- Remeber me, but if we can't implement we should just erase this code -->

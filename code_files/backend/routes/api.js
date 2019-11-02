@@ -13,6 +13,13 @@ router.get('/users', (req, res) => {
   //   res.send({ {type: 'GET'});
 });
 
+// router.get('/users/:id', (req, res) => {
+//      const userExists = User.findOne({username: req.body.username})
+//      if(userExist)
+//        res.send(username);
+//      //   res.send({ {type: 'GET'});
+// });
+
 //add new user
 router.post('/register', async(req, res) => {
 
@@ -23,23 +30,28 @@ router.post('/register', async(req, res) => {
 
     const emailExist = await User.findOne({ email: req.body.email });
     if(emailExist) return res.status(400).send('Email already exists');
+
+    const userExist = await User.findOne({username: req.body.username});
+    if (userExist) return res.status(400).send('User already exists');
+
     console.log(req.body);
     User.create(req.body).then(function(user) {
         res.redirect('/');
     });
 });
 
-router.post('/login', async(req, res) => {
-    const {error} = loginValidation(req.body);
-    if (error)
-        return res.status(400).send(error.details[0].message);
+router.post('/signin', async(req, res) => {
+    // const {error} = loginValidation(req.body);
+    // if (error)
+    //     return res.status(400).send(error.details[0].message);
 
-    const email = await User.findOne({ email: req.body.email });
-    const user = await User.findOne({ username: req.body.username })
-    if(!user)
-        return res.status(400).send('Email/PW Incorrect');
-
-    res.send('Logged In');
+    // const pw = await User.findOne({ email: req.body.password });
+    const user = await User.findOne({ username: req.body.username });
+    // console.log(req.body.username);
+    if(user)
+        res.redirect('/dashboard.html');
+    else
+        return res.status(400).send('Username or Password is Incorrect');
 
 });
 
