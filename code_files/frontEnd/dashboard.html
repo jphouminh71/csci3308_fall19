@@ -6,54 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel=stylesheet href="dashStyle.css">
     <meta charset="UTF-8">
-<style>
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    #wrapper {
-    width: 20000px;
-    height: 1000px;
-    overflow: hidden; will contain if #first is longer than #second
-    }
-    #first {
-        float:left; /* add this */
-    }
-    #second {
-        overflow: hidden; /* if you don't want #second to wrap below #first */
-    }
-
-    .tableFixHead          { overflow-y: auto; height: 200px; }
-    .tableFixHead thead th { position: sticky; top: 0; }
-
-    table  { border-collapse: collapse; width: 100%; }
-    th, td { padding: 8px 16px; }
-    th     { background:#eee; }
-    /* div.main, div.tabs { float: left; } */
-    div.container { overflow: hidden; }
-
-    .hero-image {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/mountain.jpeg");
-        height: 25%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    }
-
-    .hero-text {
-        text-align: left;
-        position: absolute;
-        top: 60%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        color: rgba(255, 255, 255, 0.726);
-    }
-
-</style>
 <title>Dashboard</title>
 
 </head>
@@ -62,6 +16,23 @@
     <div class="hero-image">
         <p class="hero-text display-1">Dashboard</p>
     </div> 
+    <br><br><br>
+    <div>
+        <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+            <div class="container-fluid text-white">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Sticky navbar!</a>
+                </div>
+                <ul class="nav navbar-nav list-inline">
+                <li class="active list-inline-item"><a href="#" style="color:white">Home</a></li>
+                <li class="list-inline-item"><a href="#" style="color:white">Sample2</a></li>
+                <li class="list-inline-item"><a href="#" style="color:white">Sample3</a></li>
+                <li class="list-inline-item"><a href="#" style="color:white">Sample4</a></li>
+                <li class="list-inline-item"><a href="#" style="color: white">Sample5</a></li>
+                </ul>
+            </div>
+        </nav> 
+    </div>
     <div class="container" id="wrapper">
         <div class="card" id="first">
             <div class="card-body">
