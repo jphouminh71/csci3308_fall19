@@ -2,9 +2,15 @@ const router = require('express').Router();
 const User = require('../models/User.js');
 const { registerValidation, loginValidation } = require('./validation.js');
 
-//get list of users
+//get list of users - TA said this should work
 router.get('/users', (req, res) => {
-    res.send({type: 'GET'});
+ const{error} = registerValidation(req.body);
+  if(error)
+    return res.status(400).send(error.details[0].message)
+  const userExists = User.findOne({username: req.body.username})
+  if(userExist)
+    res.send(username);
+  //   res.send({ {type: 'GET'});
 });
 
 //add new user
@@ -30,11 +36,11 @@ router.post('/login', async(req, res) => {
 
     const email = await User.findOne({ email: req.body.email });
     const user = await User.findOne({ username: req.body.username })
-    if(!user) 
+    if(!user)
         return res.status(400).send('Email/PW Incorrect');
 
     res.send('Logged In');
-    
+
 });
 
 //remove user from db
