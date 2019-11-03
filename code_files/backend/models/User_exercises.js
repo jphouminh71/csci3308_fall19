@@ -1,19 +1,19 @@
  const mongoose = require('mongoose');
 
  const userExercisesSchema = new mongoose.Schema({
-   username: {
+   pullUps: {
      type: String, //use this to seperate each user, if found then keep adding to this schema for their exercise max
    },
-   Bench:{
+   bench:{
      type: Number,
    },
-   Squat:{
+   squat:{
      type: Number,
    },
-   Deadlift:{
+   deadlift:{
      type: Number,
    },
-   MilitaryPress:{
+   military_press:{
      type: Number,
    },
 
