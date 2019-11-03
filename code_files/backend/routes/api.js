@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/User.js');
+const User = require('../models/User.js');      // returns the model of the collection of 'User' schema
 const { registerValidation, loginValidation } = require('./validation.js');
 
 //get list of users - TA said this should work
@@ -20,7 +20,7 @@ router.get('/users', (req, res) => {
 //      //   res.send({ {type: 'GET'});
 // });
 
-//add new user
+//add new user when they register
 router.post('/register', async(req, res) => {
 
     const {error} = registerValidation(req.body);
@@ -35,11 +35,12 @@ router.post('/register', async(req, res) => {
     if (userExist) return res.status(400).send('User already exists');
 
     console.log(req.body);
-    User.create(req.body).then(function(user) {
-        res.redirect('/');
+    User.create(req.body).then(function(user) {   // if all is good we put this into the database
+        res.redirect('/');      // redirect to homepage, need to change to dashboard
     });
 });
 
+// when a post request is sent from the client from signing it will fire this function
 router.post('/signin', async(req, res) => {
     // const {error} = loginValidation(req.body);
     // if (error)
@@ -48,9 +49,9 @@ router.post('/signin', async(req, res) => {
     // const pw = await User.findOne({ email: req.body.password });
     const user = await User.findOne({ username: req.body.username });
     // console.log(req.body.username);
-    if(user)
+    if(user)        // if there is a user direct to the dashboard
         res.redirect('/dashboard.html');
-    else
+    else          // send error message
         return res.status(400).send('Username or Password is Incorrect');
 
 });

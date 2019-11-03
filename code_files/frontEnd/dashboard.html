@@ -14,7 +14,7 @@
 
 <body>
     <div class="hero-image">
-        <p class="hero-text display-3">Welcome, John Doe</p>
+        <p class="hero-text display-3">Welcome, John Doe</p>  <!-- Should we create ejs files to handle this page since they are only coming here once logged in?-->
     </div>
     <br><br><br>
     <div>
@@ -24,7 +24,7 @@
                     <a class="navbar-brand">Fit Track</a>
                 </div>
                 <ul class="nav navbar-nav list-inline">
-                <li class="active list-inline-item"><a href="#" style="color:white">Home</a></li>
+                <li class="active list-inline-item"><a href="#" style="color:white">Home</a></li> <!-- These all need to be linked -->
                 <li class="list-inline-item"><a href="#" style="color:white">Exercises</a></li>
                 <li class="list-inline-item"><a href="#" style="color:white">Dashboard</a></li>
                 <li class="list-inline-item"><a href="#" style="color:white">Community</a></li>
@@ -34,7 +34,7 @@
     </div>
     <div class="container" id="wrapper">
         <div class="card" id="first">
-            <div class="card-body">
+            <div class="card-body">             <!-- this will also all need to be updated -->
                 <img src="./images/login_logo.png" alt="John">
                 <h1 name="name">John Doe</h1>
                 <!-- <p class="title" id="">title</p> -->
@@ -46,7 +46,7 @@
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
                     Edit about me
                 </button>
-                <form method="PUT">
+                <form method="PUT">       <!-- This is a form page for the bio of the user -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">

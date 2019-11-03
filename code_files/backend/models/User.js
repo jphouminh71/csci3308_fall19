@@ -35,6 +35,15 @@ const userSchema = new mongoose.Schema({
       max: 4,
       min: 2
     }
+
+    /* shouldn't we also have to add an attribute for the users Bio
+
+    bio : {
+      type: String,
+      max:1000      // maximum of 1000 characters 
+  }
+
+    */
 });
 
 module.exports = mongoose.model('User', userSchema);
