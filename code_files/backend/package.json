@@ -16,6 +16,7 @@
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
     "mongoose": "^5.7.6"
   }

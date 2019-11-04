@@ -15,6 +15,10 @@ const userFoodSchema = new mongoose.Schema({
     type : Number,
     required: [true, 'caloric intake field required']
   }
+  // objID : {
+  //   type :  User.Types.ObjectId,
+  //   required : true
+  // }
   /*
   username:{ //to find the specific user
     type: String,

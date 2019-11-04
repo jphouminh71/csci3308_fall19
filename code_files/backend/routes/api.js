@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User.js');      // returns the model of the collection of 'User' schema
+const User_food = require('../models/User_food.js');
 const { registerValidation, loginValidation } = require('./validation.js');
 
 //get list of users - TA said this should work
@@ -13,12 +14,12 @@ router.get('/users', (req, res) => {
   //   res.send({ {type: 'GET'});
 });
 
-// router.get('/users/:id', (req, res) => {
-//      const userExists = User.findOne({username: req.body.username})
-//      if(userExist)
-//        res.send(username);
-//      //   res.send({ {type: 'GET'});
-// });
+router.get('/users/test', (req, res) => {
+    //  const userExists = User.findOne({username: req.body.username})
+    //  if(userExist)
+    //    res.send(username);
+       res.send( {type: 'GET'});
+});
 
 //add new user when they register
 router.post('/register', async(req, res) => {
