@@ -1,6 +1,6 @@
  const mongoose = require('mongoose');
 
- const userExercisesSchema = new mongoose.Schema({
+ const exercisesSchema = new mongoose.Schema({
    pullUps: {
      type: String, //use this to seperate each user, if found then keep adding to this schema for their exercise max
    },
@@ -18,4 +18,4 @@
    },
 
  });
- module.exports = mongoose.model('User_exercises', userExercises);
+ module.exports = mongoose.model('User_Exercises', exercisesSchema);
