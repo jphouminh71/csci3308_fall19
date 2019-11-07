@@ -1,0 +1,42 @@
+Revised List of Features
+
+This is    an updated list     of your FEATURES inventory (from Milestone 2).
+It is normal for feature lists to change during    the course of a project.
+Some features     may have been dropped. Some features may have    been added.
+This revised features lists should reflect these changes.
+This revised features list should identify the PRIORITY order of how the features will    be developed.
+
+
+PRIORITY LEVELS
+
+Daily Exercise tracker: A tool to help users keep track of what exercises they have done, then can see when the user should be able to increase intensity 
+Food tracker: Users will be able to input their caloric food intake, to keep track of calories consumed in a day
+Preset Exercises: Preset exercises that we provide, each day would be a different workout, depending on the training program the user is put on. The program is based on the Users’ goal.
+Goal Setting: Input by the user, so we can remind them to progress towards their goal
+Point rewards: Users earn points that allows users to redeem for items like, advanced training guides/nutrition help
+Interaction between users: Users will be able to comment on other users’ activities, much like a social media aspect
+These are the features we want to implement, with one being the highest priority and six being the least prioritized. Small changes we made were the trackers are daily trackers to make it easier for the user to progress in their goals, and the points gained, can be redeemed for more advanced programs, since the users would have been adapted to all the beginner programs.
+
+
+Architecture Diagram
+
+This deliverable is a picture or diagram that shows each architectural component    of    your application.
+The diagram should identify how your application’s front-end, integration layer, and    backend processes will be hosted.
+This diagram should identify the flow    of data    from one layer to another.
+This diagram should identify the protocols being used to/from each component layer.
+
+
+Front End design
+
+This deliverable is a series of diagrams that show the basic design of your application’s    front end.
+Typically, this design is most easily presented in terms of a WIREFRAME.
+This may be hand drawn, or created using a web page wireframe drawing tool.
+The front end design should identify each major feature of the application’s front end
+
+
+Database design
+
+For our database we will be using a mongoose module as part of NodeJS and connecting via an environment variable to a free mongoDB Atlas cluster. All forms of data will be stored in JSON format with certain types shown on the diagram below.
+
+
+
