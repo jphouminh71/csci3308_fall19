@@ -27,7 +27,7 @@
                 <li class="active list-inline-item"><a href="#" style="color:white">Home</a></li> <!-- These all need to be linked -->
                 <li class="list-inline-item"><a href="#" style="color:white">Exercises</a></li>
                 <li class="list-inline-item"><a href="#" style="color:white">Dashboard</a></li>
-                <li class="list-inline-item"><a href="#" style="color:white">Community</a></li>
+                <!-- <li class="list-inline-item"><a href="#" style="color:white">Community</a></li> -->
                 </ul>
             </div>
         </nav>
@@ -67,15 +67,47 @@
                         </div>
                     </div>
                 </form>
+            <!-- </div> -->
+            <br></br>
+            <button type = "button" class="btn btn-secondary" data-toggle="modal" data-target="#formModal">
+                Add my stats
+            </button>
+            <div class="modal fade" id="formModal">
+                <div class="modal-dialog modal-login">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Enter Your Stats</h4>
+                      <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label>Height</label>
+                        <input id="height" type="text" class="form-control" name="Height" placeholder="ex. 68in">
+                      </div>
+                      <div class="form-group">
+                        <label>Weight</label>
+                        <input id="weight" type="text" class="form-control" name="Weight" placeholder="ex. 125lbs">
+                      </div>
+                      <div class="form-group">
+                        <label>Bench Pres</label>
+                        <input id="bench" type="text" class="form-control" name="Bench Press" placeholder="ex. 20lbs">
+                      </div>
+                      <div class="form-group">
+                        <button id="statSubmit" class="btn btn-primary">Submit Stats</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <br>
+          </div>
+        <!-- <br> -->
         <div class="tableFixHead">
             <table class="table" id="second">
                 <thead class="thead-dark">
                     <tr><th>Exercises</th><th>Current best</th></tr>
                 </thead>
-                <tbody class="p-3 mb-2 bg-warning text-dark">
+                <tbody class="p-3 mb-2 bg-info text-body">
                     <tr><td>A1</td><td>A2</td></tr>
                     <tr><td>B1</td><td>B2</td></tr>
                     <tr><td>C1</td><td>C2</td></tr>
@@ -89,7 +121,7 @@
                 <thead class="thead-dark">
                     <tr><th>Day</th><th>Caloric Intake</th><th>Daily Total</th></tr>
                 </thead>
-                <tbody class="p-3 mb-2 bg-warning text-dark">
+                <tbody class="p-3 mb-2 bg-info text-body">
                     <tr><td>Sunday</td><td>A1</td><td>A2</td></tr>
                     <tr><td>Monday</td><td>A1</td><td>A2</td></tr>
                     <tr><td>Tuesday</td><td>B1</td><td>B2</td></tr>
@@ -105,7 +137,7 @@
                 <thead class="thead-dark">
                     <tr><th>Day</th><th>Water Intake</th><th>Daily Total</th></tr>
                 </thead>
-                <tbody class="p-3 mb-2 bg-warning text-dark">
+                <tbody class="p-3 mb-2 bg-info text-body">
                   <tr><td>Sunday</td><td>A1</td><td>A2</td></tr>
                   <tr><td>Monday</td><td>A1</td><td>A2</td></tr>
                   <tr><td>Tuesday</td><td>B1</td><td>B2</td></tr>
