@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User.js');      // returns the model of the collection of 'User' schema
 const User_food = require('../models/User_food.js');
 const { registerValidation, loginValidation } = require('./validation.js');
+const path = require('path');
 
 //get list of users - TA said this should work
 router.get('/users', (req, res) => {
@@ -41,6 +42,11 @@ router.post('/register', async(req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+    console.log("testing here");
+    res.sendFile(path.join(__dirname, '../../frontEnd/views/login.html'));
+});
+
 // when a post request is sent from the client from signing it will fire this function
 router.post('/signin', async(req, res) => {
     // const {error} = loginValidation(req.body);
@@ -49,9 +55,9 @@ router.post('/signin', async(req, res) => {
 
     // const pw = await User.findOne({ email: req.body.password });
     const user = await User.findOne({ username: req.body.username });
-    // console.log(req.body.username);
+    console.log(user);
     if(user)        // if there is a user direct to the dashboard
-        res.redirect('/dashboard.html');
+        res.render('../../frontEnd/views/dashboard', {person: user});
     else          // send error message
         return res.status(400).send('Username or Password is Incorrect');
 

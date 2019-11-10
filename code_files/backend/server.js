@@ -14,15 +14,22 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true})     //
                             console.log('error is ' + err);
                         });
 
+//use ejs as view engine
+app.set('view engine', 'ejs');
+
 //use this instead of bodyparser setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//using static files such as images and css files
+app.use(express.static(path.join(__dirname, '../frontEnd/public'))); 
+
+//using this path to go to api
 app.use('/api', require('./routes/api'));
-app.use(express.static(path.join(__dirname, '../frontEnd'))); 
 
-
+//landing page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontEnd/index.html'));
+    res.sendFile(path.join(__dirname, '../frontEnd/views/index.html'));
 });
 
 

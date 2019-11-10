@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel=stylesheet href="dashStyle.css">
+    <link rel=stylesheet href="/css/dashStyle.css">
     <meta charset="UTF-8">
 <title>Dashboard</title>
 
@@ -14,7 +14,7 @@
 
 <body>
     <div class="hero-image">
-        <p class="hero-text display-3">Welcome, John Doe</p>  <!-- Should we create ejs files to handle this page since they are only coming here once logged in?-->
+        <p class="hero-text display-3">Welcome, <%=person.username  %></p>  
     </div>
     <br><br><br>
     <div>
@@ -35,7 +35,7 @@
     <div class="container" id="wrapper">
         <div class="card" id="first">
             <div class="card-body">             <!-- this will also all need to be updated -->
-                <img src="./images/login_logo.png" alt="John">
+                <img src="/images/login_logo.png" alt="John">
                 <h1 name="name">John Doe</h1>
                 <!-- <p class="title" id="">title</p> -->
                 <p style="width: 225px">About me</p>
