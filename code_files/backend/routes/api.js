@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User.js');      // returns the model of the collection of 'User' schema
 const User_food = require('../models/User_food.js');
+const User_Personal = require('../models/User_personal.js');
 const { registerValidation, loginValidation } = require('./validation.js');
 const path = require('path');
 
@@ -15,12 +16,12 @@ router.get('/users', (req, res) => {
   //   res.send({ {type: 'GET'});
 });
 
-router.get('/users/test', (req, res) => {
-    //  const userExists = User.findOne({username: req.body.username})
-    //  if(userExist)
-    //    res.send(username);
-       res.send( {type: 'GET'});
-});
+// router.get('/users/test', (req, res) => {
+//     //  const userExists = User.findOne({username: req.body.username})
+//     //  if(userExist)
+//     //    res.send(username);
+//        res.send( {type: 'GET'});
+// });
 
 //add new user when they register
 router.post('/register', async(req, res) => {
@@ -42,6 +43,7 @@ router.post('/register', async(req, res) => {
     });
 });
 
+//go to login page
 router.get('/login', (req, res) => {
     console.log("testing here");
     res.sendFile(path.join(__dirname, '../../frontEnd/views/login.html'));
@@ -56,10 +58,32 @@ router.post('/signin', async(req, res) => {
     // const pw = await User.findOne({ email: req.body.password });
     const user = await User.findOne({ username: req.body.username });
     console.log(user);
-    if(user)        // if there is a user direct to the dashboard
-        res.render('../../frontEnd/views/dashboard', {person: user});
+    if(user) {       // if there is a user direct to the dashboard
+        const personal = await User_Personal.findOne({user_id: req.body._id});
+        if (personal) {
+            res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
+        } else {
+            User_Personal.create();
+        }
+    }
     else          // send error message
         return res.status(400).send('Username or Password is Incorrect');
+
+        // if(personal)
+        //     res.render('../../frontEnd/views/dashboard', {person: user, personal: personal});
+        // else
+        //     User_Personal.create(req.body._id).then(function(personal){
+
+        //     });
+
+});
+
+router.get('/bio', (req, res) => {
+
+    document.getElementById("bioarea").innerHTML = "hello world";
+    // User_Personal.findOne({r})
+    console.log("hello, " + JSON.stringify(req.body));
+    console.log("hello! " + JSON.stringify(req.params));
 
 });
 

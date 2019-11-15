@@ -43,11 +43,11 @@
                 <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
                 <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
                 <br>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                    Edit about me
-                </button>
-                <form method="PUT">       <!-- This is a form page for the bio of the user -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form method="GET" action="/api/bio">
+                    <input type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dash_modal" placeholder="Enter bio here">
+                </form>
+                <form>       <!-- This is a form page for the bio of the user -->
+                    <div class="modal fade" id="dash_modal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -57,7 +57,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <textarea class="form-control" name="bio"></textarea>
+                                <textarea id="bioarea" class="form-control" name="bio" placeholder="Enter bio here"><%= self.bio %></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -156,7 +156,11 @@
     </div>
 
 
-    <!-- </div> -->
+    <script>
+        function loadBio() {
+            window.location.href = 'api/'
+        }
+    </script>
 </body>
 
 </html>
