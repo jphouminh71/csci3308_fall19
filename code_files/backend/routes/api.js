@@ -43,6 +43,10 @@ router.post('/register', async(req, res) => {
     });
 });
 
+router.get('/js/login.js', (req, res) => {
+    console.log("hereeee");
+    res.sendFile(path.join(__dirname, '../../frontEnd/views/js/login.js'));
+});
 //go to login page
 router.get('/login', (req, res) => {
     console.log("testing here");
@@ -63,7 +67,9 @@ router.post('/signin', async(req, res) => {
         if (personal) {
             res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
         } else {
-            User_Personal.create();
+            User_Personal.create(user._id);
+            console.log(User_Personal.user_id);
+            res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
         }
     }
     else          // send error message
