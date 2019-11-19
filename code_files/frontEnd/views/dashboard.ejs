@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel=stylesheet href="/css/dashStyle.css">
+    <link rel=stylesheet href="/static/css/dashStyle.css">
     <meta charset="UTF-8">
 <title>Dashboard</title>
 
@@ -14,7 +14,7 @@
 
 <body>
     <div class="hero-image">
-        <p class="hero-text display-3">Welcome, <%=person.username  %></p>  
+        <p class="hero-text display-3">Welcome, <%=user.username  %></p>  
     </div>
     <br><br><br>
     <div>
@@ -35,18 +35,17 @@
     <div class="container" id="wrapper">
         <div class="card" id="first">
             <div class="card-body">             <!-- this will also all need to be updated -->
-                <img src="/images/login_logo.png" alt="John">
+                <img src="/static/images/login_logo.png" alt="John">
                 <h1 name="name">John Doe</h1>
                 <!-- <p class="title" id="">title</p> -->
-                <p style="width: 225px">About me</p>
+                <p style="width: 225px"><%=personal.bio%></p>
                 <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
                 <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
                 <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
                 <br>
-                <form method="GET" action="/api/bio">
-                    <input type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dash_modal" placeholder="Enter bio here">
-                </form>
-                <form>       <!-- This is a form page for the bio of the user -->
+                <!-- <form method="GET" action="/api/bio"> -->
+                <input type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dash_modal" placeholder="Enter bio here" value="About me">
+                <!-- </form> -->
                     <div class="modal fade" id="dash_modal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -56,17 +55,20 @@
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <textarea id="bioarea" class="form-control" name="bio" placeholder="Enter bio here"><%= self.bio %></textarea>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <form method="GET" action="/api/dashboard">       <!-- This is a form page for the bio of the user -->
+                                <div class="modal-body">
+                                    <textarea id="bioarea" class="form-control" name="bio"><%= personal.bio %></textarea>
+                                    <input type="hidden" name="_method" value="put"/>
+                                    <input type="hidden" name="username" value="<%=personal.username%>"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
                             </div>
                         </div>
                     </div>
-                </form>
             <!-- </div> -->
             <br></br>
             <button type = "button" class="btn btn-secondary" data-toggle="modal" data-target="#formModal">
@@ -154,13 +156,6 @@
           <div class="progress-bar bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div>
-
-
-    <script>
-        function loadBio() {
-            window.location.href = 'api/'
-        }
-    </script>
 </body>
 
 </html>

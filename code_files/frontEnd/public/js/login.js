@@ -1,4 +1,6 @@
+console.log("in js");
 function openModal() {
+    console.log("in js");
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
 	var letter = document.getElementById("letter");

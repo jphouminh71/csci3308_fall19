@@ -16,13 +16,6 @@ router.get('/users', (req, res) => {
   //   res.send({ {type: 'GET'});
 });
 
-// router.get('/users/test', (req, res) => {
-//     //  const userExists = User.findOne({username: req.body.username})
-//     //  if(userExist)
-//     //    res.send(username);
-//        res.send( {type: 'GET'});
-// });
-
 //add new user when they register
 router.post('/register', async(req, res) => {
 
@@ -43,10 +36,6 @@ router.post('/register', async(req, res) => {
     });
 });
 
-router.get('/js/login.js', (req, res) => {
-    console.log("hereeee");
-    res.sendFile(path.join(__dirname, '../../frontEnd/views/js/login.js'));
-});
 //go to login page
 router.get('/login', (req, res) => {
     console.log("testing here");
@@ -65,32 +54,35 @@ router.post('/signin', async(req, res) => {
     if(user) {       // if there is a user direct to the dashboard
         const personal = await User_Personal.findOne({user_id: req.body._id});
         if (personal) {
-            res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
+            req.app.locals.user = user;
+            req.app.locals.personal = personal;
+            res.render(path.join(__dirname, '../../frontEnd/views/dashboard'));
+            // res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
         } else {
-            User_Personal.create(user._id);
-            console.log(User_Personal.user_id);
-            res.render('../../frontEnd/views/dashboard', {person: user, self: personal});
-        }
+            User_Personal.create({_id: user._id, username: user.username}).then(function(personal_stats) {
+            res.render('../../frontEnd/views/dashboard', {person: user, self: personal_stats});
+        });
+            // console.log();
     }
-    else          // send error message
+}   else          // send error message
         return res.status(400).send('Username or Password is Incorrect');
-
-        // if(personal)
-        //     res.render('../../frontEnd/views/dashboard', {person: user, personal: personal});
-        // else
-        //     User_Personal.create(req.body._id).then(function(personal){
-
-        //     });
-
 });
 
-router.get('/bio', (req, res) => {
-
-    document.getElementById("bioarea").innerHTML = "hello world";
-    // User_Personal.findOne({r})
-    console.log("hello, " + JSON.stringify(req.body));
-    console.log("hello! " + JSON.stringify(req.params));
-
+router.get('/dashboard', (req, res) => {
+    if(req.query._method && req.query._method === 'put') {
+        User_Personal.findOneAndUpdate({username: req.query.username}, {$set:{bio: req.query.bio}})
+        .then(function(info) {
+                res.app.locals.personal.bio = req.query.bio;
+                // req.app.locals.personal
+                res.render('../../frontEnd/views/dashboard');
+        });
+    } else {
+        User.findOne(req.body.username).then(function(user) {
+            User_Personal.findOne(req.body.username).then(function(personal_stats) {
+                res.render('../../frontEnd/views/dashboard', {person: user, self: personal_stats});
+            });
+        });
+    }
 });
 
 //remove user from db
