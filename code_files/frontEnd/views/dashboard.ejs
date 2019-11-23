@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel=stylesheet href="/static/css/dashStyle.css">
     <meta charset="UTF-8">
-<title>Dashboard</title>
-
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -38,12 +37,11 @@
                 <img src="/static/images/login_logo.png" alt="John">
                 <h1 name="name">John Doe</h1>
                 <!-- <p class="title" id="">title</p> -->
-                <p style="width: 225px"><%=personal.bio%></p>
+                <p style="width: 225px"><%=self.bio%></p>
                 <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
                 <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
                 <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
                 <br>
-                <!-- <form method="GET" action="/api/bio"> -->
                 <input type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dash_modal" placeholder="Enter bio here" value="About me">
                 <!-- </form> -->
                     <div class="modal fade" id="dash_modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -57,13 +55,13 @@
                             </div>
                             <form method="GET" action="/api/dashboard">       <!-- This is a form page for the bio of the user -->
                                 <div class="modal-body">
-                                    <textarea id="bioarea" class="form-control" name="bio"><%= personal.bio %></textarea>
+                                    <textarea id="bioarea" class="form-control" name="bio"><%= self.bio %></textarea>
                                     <input type="hidden" name="_method" value="put"/>
-                                    <input type="hidden" name="username" value="<%=personal.username%>"/>
+                                    <!-- <input type="hidden" name="username" value="<%=self.username%>"/> -->
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary" value="Save changes"/>
                                 </div>
                             </form>
                             </div>

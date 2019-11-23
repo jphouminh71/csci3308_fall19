@@ -1,5 +1,6 @@
 const express = require('express');     // package to use express
 const mongoose = require('mongoose');   // package to manipulate data in mongodb
+const session = require('express-session');
 require('dotenv').config();     // requirement for heroku
 const app = express();
 const path = require('path');
@@ -9,6 +10,10 @@ const methodOverride = require('method-override');
 //use this instead of bodyparser setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: '123secretstring321'
+}));
 
 //use ejs as view engine
 app.set('view engine', 'ejs');
