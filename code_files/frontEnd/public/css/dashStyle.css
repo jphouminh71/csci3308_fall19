@@ -72,3 +72,8 @@ div.container { overflow: hidden; }
     /* background-color: #e5f3f1; */
     color: rgba(0, 0, 0, 0);
 }
+
+/* img.resize {
+    max-width:100%;
+    height:auto;
+} */

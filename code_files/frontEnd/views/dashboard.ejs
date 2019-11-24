@@ -23,9 +23,10 @@
                     <a class="navbar-brand">Fit Track</a>
                 </div>
                 <ul class="nav navbar-nav list-inline">
-                <li class="active list-inline-item"><a href="#" style="color:white">Home</a></li> <!-- These all need to be linked -->
-                <li class="list-inline-item"><a href="#" style="color:white">Exercises</a></li>
-                <li class="list-inline-item"><a href="#" style="color:white">Dashboard</a></li>
+                <li class="active list-inline-item"><form id="navlink1" method="GET" action="/"><a href="#" style="color:white" onclick="document.getElementById('navlink1').submit()">Home</a></form></li> <!-- These all need to be linked -->
+                <li class="list-inline-item"><form id="navlink2" method="GET" action="#"><a href="#" style="color:white" onclick="document.getElementById('navlink2').submit()">Exercises</a></form></li>
+                <li class="list-inline-item"><form id="navlink3" method="GET" action="/api/dashboard">
+                    <a href="#" type="submit" style="color:white" onclick="document.getElementById('navlink3').submit()">Dashboard</a></form></li>
                 <!-- <li class="list-inline-item"><a href="#" style="color:white">Community</a></li> -->
                 </ul>
             </div>
@@ -34,8 +35,8 @@
     <div class="container" id="wrapper">
         <div class="card" id="first">
             <div class="card-body">             <!-- this will also all need to be updated -->
-                <img src="/static/images/login_logo.png" alt="John">
-                <h1 name="name">John Doe</h1>
+                <%-self.img_src%>
+                <h1 name="name"><%=self.name%></h1>
                 <!-- <p class="title" id="">title</p> -->
                 <p style="width: 225px"><%=self.bio%></p>
                 <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
@@ -48,27 +49,34 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Bio:</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">About me:</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <form method="GET" action="/api/dashboard">       <!-- This is a form page for the bio of the user -->
                                 <div class="modal-body">
-                                    <textarea id="bioarea" class="form-control" name="bio"><%= self.bio %></textarea>
+                                    <input name="name" placeholder="Enter name"><%=self.name%></input>
+                                    <textarea id="bioarea" class="form-control" name="bio" placeholder="Enter bio"><%= self.bio %></textarea>
                                     <input type="hidden" name="_method" value="put"/>
                                     <!-- <input type="hidden" name="username" value="<%=self.username%>"/> -->
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" value="Save changes"/>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
                             </div>
                         </div>
                     </div>
             <!-- </div> -->
-            <br></br>
+            <br><br>
+            <img src="/static/images/measuring-tape.png" alt="height">
+            <br><br>
+            <img src="/static/images/weight.png" alt="weight">
+            <br><br>
+            <img src="/static/images/bench.png" alt="bench">
+            <br><br>
             <button type = "button" class="btn btn-secondary" data-toggle="modal" data-target="#formModal">
                 Add my stats
             </button>

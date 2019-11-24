@@ -14,7 +14,8 @@ const personSchema = new mongoose.Schema({
     },
     img_src: {
         type: String,
-        required: false
+        required: false,
+        default: '<img src="/static/images/login_logo.png" id="profilepic" alt="">'
     },
     bio: {
       type: String,

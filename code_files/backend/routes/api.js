@@ -73,17 +73,19 @@ router.post('/signin', async(req, res) => {
 });
 
 router.get('/dashboard', verify, (req, res) => {
+    console.log("hello there");
     findUser(req.session.username, function(err, user) {
-
+        console.log(user);
         if(req.query._method && req.query._method === 'put') {
-            User_Personal.findOneAndUpdate({username: req.session.username}, {$set:{bio: req.query.bio}})
+            User_Personal.findOneAndUpdate({username: req.session.username}, {$set:{name: req.query.name, bio: req.query.bio}})
             .then(function(info) {
                 info.bio = req.query.bio;
+                info.name = req.query.name;
                 res.render('../../frontEnd/views/dashboard', {user: user, self: info});
             });
         } else {
-            User_Personal.findOne(user._id).then(function(personal_stats) {
-                res.render('../../frontEnd/views/dashboard', {person: user, self: personal_stats});
+            User_Personal.findOne({username: user.username}).then(function(personal_stats) {
+                res.render('../../frontEnd/views/dashboard', {user: user, self: personal_stats});
             });
         }
     });
