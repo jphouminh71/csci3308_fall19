@@ -1,25 +1,34 @@
 const mongoose = require('mongoose');
 
 const statsSchema = new mongoose.Schema({
-    user_id: {
+    username: {
         type: String,
         required: true
     },
     age: {
         type: Number,
-        required: false
+        required: false,
+        default: 99
     },
     gender: {
         type: String,
-        required: false
+        required: false,
+        default: "n/a"
     },
     weight: {
       type: Number,
-      required: false
+      required: false,
+      default: 0
     },
     height: {
         type: Number,
-        required: false
+        required: false,
+        default: 0
+    },
+    bench: {
+        type: Number,
+        required: false,
+        default: 0
     }
 });
 

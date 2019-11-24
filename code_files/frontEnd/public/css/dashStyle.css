@@ -42,7 +42,7 @@ div.container { overflow: hidden; }
 }
 
 .hero-text {
-    text-align: left;
+    float: left;
     position: absolute;
     top: 70%;
     left: 24%;
