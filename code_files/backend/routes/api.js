@@ -47,6 +47,9 @@ router.post('/register', async(req, res) => {
     User.create(req.body).then(function(user) {   // if all is good we put this into the database
         User_Personal.create({_id: user._id, username: user.username}).then(function(personal_stats) {
             User_Stats.create({_id: user._id, username: user.username}).then(function(stats) {
+                if (!req.session.username) {
+                    req.session.username = user.username;
+                }
                 res.render(path.join(__dirname, '../../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
             });
         });
@@ -68,6 +71,7 @@ router.post('/signin', async(req, res) => {
         if (!personal || !stats) res.status(200).send("Can't find personal info or stats");
 
         //initialize current session username
+        console.log(req.session);
         if (!req.session.username) {
             req.session.username = req.body.username;
         }

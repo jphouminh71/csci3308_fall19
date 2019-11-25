@@ -12,7 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: '123secretstring321'
+    secret: '123secretstring321',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 5 } // 5 days
 }));
 
 //use ejs as view engine
