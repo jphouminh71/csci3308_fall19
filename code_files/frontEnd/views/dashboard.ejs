@@ -88,7 +88,7 @@
                       <h4 class="modal-title">Enter Your Stats</h4>
                       <button type="button" class="close" data-dismiss="modal">x</button>
                     </div>
-                    <form method="GET" value="put" name="_method">
+                    <form method="GET" action="/api/dashboard">
                     <div class="modal-body">
                       <div class="form-group">
                         <label>Height</label>
@@ -110,6 +110,7 @@
                         <button type="submit" id="statSubmit" class="btn btn-primary">Submit Stats</button>
                       </div>
                     </div>
+                    <input type="hidden" name="_method" value="PUT"/>
                     </form>
                   </div>
                 </div>
