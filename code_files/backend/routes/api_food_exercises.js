@@ -12,8 +12,9 @@ router.post('/User_food', (req, res) =>{
   if(userexist)
   {
     console.log(req.body);
-    User_food.create(req.body).then(function(User_food)); // adds the food if the user exists
+    User_food.create(req.body).then(function(User_food){
       res.redirect('/');
+    }); // adds the food if the user exists
   }
 });
 
