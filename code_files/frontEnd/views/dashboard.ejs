@@ -106,20 +106,14 @@
                             </div>
                         </div>
                     </div>
-            <!-- </div> -->
-            <br><br>
-            <img src="/static/images/measuring-tape.png" alt="height">
-            <br><br>
-            <img src="/static/images/weight.png" alt="weight">
-            <br><br>
-            <img src="/static/images/bench.png" alt="bench">
-            <br><br>
             <!-- Used to present heigh weight and other stats about the user-->
-
-            <p style = "width: 175px"> Height: <%= stats.height %> inches</p>
-            <p style = "width: 175px"> Weight: <%= stats.weight %> pounds</p>
-            <p style = "width: 175px"> Age: <%= stats.age %> years</p>
-            <p style = "width: 175px"> Gender: <%= stats.gender %></p>
+            <div>
+                <br><br>
+                <p style = "width: 300px"><img src="/static/images/measuring-tape.png" alt="height"> Height:<%= stats.height %> inches</p>
+            </div>
+            <p style = "width: 300px"><img src="/static/images/weight.png" alt="weight"> Weight: <%= stats.weight %> pounds</p>
+            <p style = "width: 300px"> Age: <%= stats.age %> years</p>
+            <p style = "width: 300px"> Gender: <%= stats.gender %></p>
 
             <button type = "button" class="btn btn-secondary" data-toggle="modal" data-target="#formModal">
                 Add my stats
@@ -131,23 +125,23 @@
                       <h4 class="modal-title">Enter Your Stats</h4>
                       <button type="button" class="close" data-dismiss="modal">x</button>
                     </div>
-                    <form method="GET" action="/api/dashboard">
+                    <form method="POST" action="/api/dashboard">
                     <div class="modal-body">
                       <div class="form-group">
                         <label>Height</label>
-                        <input id="height" type="text" class="form-control" name="height" placeholder="ex. 68in"></input>
+                        <input id="height" type="text" class="form-control" name="height" placeholder="ex. 68in" value="<%=stats.height%>"></input>
                       </div>
                       <div class="form-group">
                         <label>Weight</label>
-                        <input id="weight" type="text" class="form-control" name="weight" placeholder="ex. 125lbs"></input>
+                        <input id="weight" type="text" class="form-control" name="weight" placeholder="ex. 125lbs" value="<%= stats.weight %>"></input>
                       </div>
                       <div class="form-group"> <!--Added Age and Gender-->
                         <label>Age</label>
-                        <input id="age" type="text" class="form-control" name="age" placeholder="ex. 25yrs"></input>
+                        <input id="age" type="text" class="form-control" name="age" placeholder="ex. 25yrs" value="<%= stats.age %>"></input>
                       </div>
                       <div class="form-group">
                         <label>Gender</label>
-                        <input id="gender" type="text" class="form-control" name="gender" placeholder="ex. Male"></input>
+                        <input id="gender" type="text" class="form-control" name="gender" placeholder="ex. Male" value="<%= stats.gender %>"></input>
                       </div>
                       <div class="form-group">
                         <button type="submit" id="statSubmit" class="btn btn-primary">Submit Stats</button>

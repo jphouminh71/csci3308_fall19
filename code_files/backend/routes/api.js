@@ -22,6 +22,18 @@ findUser = function findUser(name, callback){
     });
 }
 
+findPersonal = function findPersonal(name, callback) {
+    User_Personal.findOne({username: name}, function(err, userObj) {
+        if(err) {
+            return callback(err);
+        } else if (userObj) {
+            return callback(null, userObj);
+        } else {
+            return callback();
+        }
+    });
+}
+
 var storage = multer.diskStorage({
     // define where the file should be uploaded, else it will be uploaded to the system temp dir
     destination: function (req, file, callback) {
@@ -110,14 +122,16 @@ router.post('/dashboard', verify, (req, res) => {
                     info.name = req.body.name;
                     res.render('../../frontEnd/views/dashboard', {user: user, self: info});
                 });
-            } else if (req.query.height || req.query.weight || req.query.age || req.query.gender) {
-                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.query.height, weight: req.query.weight, age: req.query.age, gender: req.query.gender}})
+            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender) {
+                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender}})
                 .then(function(info){
-                    info.height = req.query.height;
-                    info.weight = req.query.weight;
-                    info.age = req.query.age;
-                    info.gender = req.query.gender;
-                    res.render('../../frontEnd/views/dashboard', {user: user, stats: info});
+                    findPersonal(req.session.username, function(err, personal_stats) {
+                        info.height = req.body.height;
+                        info.weight = req.body.weight;
+                        info.age = req.body.age;
+                        info.gender = req.body.gender;
+                        res.render('../../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
+                    });
                 });
             } else {
                 //edge case, fix here!
