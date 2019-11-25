@@ -91,8 +91,15 @@ router.get('/dashboard', verify, (req, res) => {
                     info.name = req.query.name;
                     res.render('../../frontEnd/views/dashboard', {user: user, self: info});
                 });
-            } else if (req.query.height || req.query.weight || req.query.bench) {
-                User_Personal.findOneAndUpdate({})
+            } else if (req.query.height || req.query.weight || req.query.age || req.query.gender) {
+                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.query.height, weight: req.query.weight, age: req.query.age, gender: req.query.gender}})
+                .then(function(info){
+                    info.height = req.query.height;
+                    info.weight = req.query.weight;
+                    info.age = req.query.age;
+                    info.gender = req.query.gender;
+                    res.render('../../frontEnd/views/dashboard', {user: user, stats: info});
+                });
             } else {
                 //edge case, fix here!
             }
