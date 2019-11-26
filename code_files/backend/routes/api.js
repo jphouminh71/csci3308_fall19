@@ -34,11 +34,23 @@ findPersonal = function findPersonal(name, callback) {
     });
 }
 
+findStats = function findStats(name, callback) {
+    User_Stats.findOne({username: name}, function(err, userObj) {
+        if(err) {
+            return callback(err);
+        } else if (userObj) {
+            return callback(null, userObj);
+        } else {
+            return callback();
+        }
+    });
+}
+
 var storage = multer.diskStorage({
     // define where the file should be uploaded, else it will be uploaded to the system temp dir
     destination: function (req, file, callback) {
         console.log('here?');
-      callback(null, path.join(__dirname, '/../../frontEnd/public/uploads/'))
+      callback(null, path.join(__dirname, '/../frontEnd/public/uploads/'))
     },
     // define "filename", else a random name will be used for the uploaded file
     filename: function (req, file, callback) {
@@ -79,7 +91,7 @@ router.post('/register', async(req, res) => {
                 if (!req.session.username) {
                     req.session.username = user.username;
                 }
-                res.render(path.join(__dirname, '../../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
+                res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
             });
         });
     });
@@ -87,7 +99,7 @@ router.post('/register', async(req, res) => {
 
 //go to login page
 router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontEnd/views/login.html'));
+    res.sendFile(path.join(__dirname, '../frontEnd/views/login.html'));
 });
 
 // when a post request is sent from the client from signing it will fire this function
@@ -104,14 +116,12 @@ router.post('/signin', async(req, res) => {
         if (!req.session.username) {
             req.session.username = req.body.username;
         }
-        res.render(path.join(__dirname, '../../frontEnd/views/dashboard'), {user: user, self: personal, stats: stats});
+        res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal, stats: stats});
     } else          // send error message
         return res.status(400).send('Username or Password is Incorrect');
 });
 
 router.post('/dashboard', verify, (req, res) => {
-    console.log('helloooo');
-    console.log(req.body);
     findUser(req.session.username, function(err, user) {
         // console.log(user);
         if(req.body._method && req.body._method === 'put') {
@@ -120,7 +130,7 @@ router.post('/dashboard', verify, (req, res) => {
                 .then(function(info) {
                     info.bio = req.body.bio;
                     info.name = req.body.name;
-                    res.render('../../frontEnd/views/dashboard', {user: user, self: info});
+                    res.render('../frontEnd/views/dashboard', {user: user, self: info});
                 });
             } else if (req.body.height || req.body.weight || req.body.age || req.body.gender) {
                 User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender}})
@@ -130,7 +140,7 @@ router.post('/dashboard', verify, (req, res) => {
                         info.weight = req.body.weight;
                         info.age = req.body.age;
                         info.gender = req.body.gender;
-                        res.render('../../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
+                        res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
                     });
                 });
             } else {
@@ -139,7 +149,11 @@ router.post('/dashboard', verify, (req, res) => {
             
         } else {
             User_Personal.findOne({username: user.username}).then(function(personal_stats) {
-                res.render('../../frontEnd/views/dashboard', {user: user, self: personal_stats});
+                findStats(req.session.username, function(err, stats) {
+                    console.log(stats);
+                    console.log(req.session.username);
+                    res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: stats});
+                });
             });
         }
     });
@@ -155,7 +169,7 @@ router.post('/dashboard/avatar', upload.single('avatar'), (req, res) => {
             const stats = User_Stats.findOne({username: req.session.username});
 
             personal_stats.img_src='<img src="/static/uploads/'+ req.file.filename +'" class="image" id="mypic" alt="defaultpic">';
-            res.render('../../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: stats});
+            res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: stats});
         });
     });
 });
