@@ -1,0 +1,117 @@
+<DOCTYPE html>
+<html lang = 'en'>
+<head>
+  <link rel="icon" type="image/gif/png" href="/static/images/login_logo.png">      <!-- FIX THIS, its like a small line where we can have a logo on the
+  <title>Welcome Page!</title>       <!-- title of the page located on the URL -->
+
+                <!-- Boostrap and CSS sources -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Boostrap links -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <!-- my stylesheets and javascript files -->
+
+  <style>
+  body, html {
+      height: 100%;
+  }
+
+  /* The hero image */
+  .hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("photographer.jpg");
+
+    /* Set a specific height */
+    height: 50%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  /* Place text in the middle of the image */
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  </style>
+</head>
+<!-- LINKS TO SOCIAL MEDIA -->
+  <div class="container-fluid" style="background-color:white">
+     <div class="container">
+       <div class="social_media">
+         <span>
+            <form method="GET" action="/api/login">
+            <button type="submit" id="login-link" style="margin-left:1000px">LOGIN:</button>
+            <img style="height: 20px; width: 20px;"src="/static/images/login_logo.png" alt="instagram_logo"/>
+            </form>
+        </span>
+      </div>
+    </div>
+  </div>
+<!-- Start of the actual page -->
+<body id="jumbotron-1" class="container" >
+        <!-- Section for the div of the welcome page -->
+    <div class="jumbotron jumbotron-fluid" style="background-image:url(/static/images/mountain.jpeg); color:white">
+      <div class="container">
+        <h1 id="title" class="display-4">Welcome to Fit Track!</h1>
+        <p class="lead" style="color:orange">Monitor you daily lifestyle, track your intake, set your goals, live healthy.</p>
+      </div>
+    </div>
+
+    <!-- next section will be description of what the software will be able to do -->
+    <div class="form-group">
+      <h2> Dont have an account with us? Heres what we have to offer. <br></h2>
+      <ul id="list" style="text-align:left">
+        <li><font size="+2">Excerise Tracking Log</font></li>
+          <li><font size="+2">Track Water Intake</font></li>
+          <li><font size="+2">Track Food Intake</font></li>
+          <li><font size="+2">Chat With Other Users</font></li>
+          <li><font size="+2">Get Lists Of Preset Exercises</font></li>
+      </ul>
+      <br><br><br>
+      <hr>
+      <br><br><br>
+
+      <div class="hero-image" style="background-image:url(/static/images/mountain.jpeg); color:white">
+        <div class="hero-text">
+          <h1 style="color:orange"><font size="+40">Sign Up Today!</font></h1>
+          <p style="color:orange">click the link to sign up</p>
+           <a style="margin-left:20px" href="form.html" target=""> <img style="border-radius:50%;height: 90px; width: 90px;"src="./images/login_logo.png" alt="instagram_logo"> </a>      <!-- make this button link to REGISTRATION page -->
+        </div>
+      </div>
+    </div> <br><br><br>
+    <hr>
+    <br><br><br>
+    <!--from here it will be a gallery of images on auto rotate, for now it can just be some random images-->
+    <!-- make a gallery of images -->
+
+    <!-- this is for contact information -->
+    <div class="form-group">
+      <p id="contact-us-label" style="text-align:left;font-weight:bold;"> Contact Us: </p>
+      <p style="text-align:right">joph0114@colorado.edu</p>
+      <p style="text-align:right">zachisgay@colorado.edu</p>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

@@ -50,7 +50,8 @@ var storage = multer.diskStorage({
     // define where the file should be uploaded, else it will be uploaded to the system temp dir
     destination: function (req, file, callback) {
         console.log('here?');
-      callback(null, path.join(__dirname, '/../frontEnd/public/uploads/'))
+        console.log(__dirname);
+      callback(null, path.join(__dirname, '../frontEnd/public/uploads/'))
     },
     // define "filename", else a random name will be used for the uploaded file
     filename: function (req, file, callback) {

@@ -1,6 +1,7 @@
 const express = require('express');     // package to use express
 const mongoose = require('mongoose');   // package to manipulate data in mongodb
 const session = require('express-session');
+const mongoStore = require('connect-mongo')(session);
 require('dotenv').config();     // requirement for heroku
 const app = express();
 const path = require('path');
@@ -15,6 +16,7 @@ app.use(session({
     secret: '123secretstring321',
     resave: false,
     saveUninitialized: true,
+    store: new mongoStore({mongooseConnection: mongoose.connection}),
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 5 } // 5 days
 }));
 
@@ -30,14 +32,14 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true})     //
                         });
 
 //using static files such as images and css files
-app.use('/static',express.static(path.join(__dirname, '../frontEnd/public'))); 
+app.use('/static',express.static(path.join(__dirname, '/frontEnd/public'))); 
 //using this path to go to api
 app.use('/api', require('./routes/api'));
 mongoose.set('useFindAndModify', false);
 app.use(methodOverride('_method'));
 //landing page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontEnd/views/index.html'));
+    res.sendFile(path.join(__dirname, '/frontEnd/views/index.html'));
 });
 
 app.listen(process.env.port || 5000, function(req, res) {       // listening to the port
