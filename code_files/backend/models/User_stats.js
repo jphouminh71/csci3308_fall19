@@ -25,7 +25,7 @@ const statsSchema = new mongoose.Schema({
         required: false,
         default: 0
     },
-    target_weight: {
+    bench: {
         type: Number,
         required: false,
         default: 0
