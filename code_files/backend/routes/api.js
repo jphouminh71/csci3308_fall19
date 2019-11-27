@@ -123,9 +123,11 @@ router.post('/dashboard', verify, (req, res) => {
             if (req.body.bio) {
                 User_Personal.findOneAndUpdate({username: req.session.username}, {$set:{name: req.body.name, bio: req.body.bio}})
                 .then(function(info) {
-                    info.bio = req.body.bio;
-                    info.name = req.body.name;
-                    res.render('../frontEnd/views/dashboard', {user: user, self: info});
+                    findStats(req.session.username, function(err, stats) {
+                        info.bio = req.body.bio;
+                        info.name = req.body.name;
+                        res.render('../frontEnd/views/dashboard', {user: user, self: info, stats: stats});
+                    });
                 });
             } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.bench) {
                 User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender, bench: req.body.bench}})
