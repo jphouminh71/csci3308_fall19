@@ -175,6 +175,7 @@ router.post('/dashboard/avatar', upload.single('avatar'), (req, res) => {
     });
 });
 
+
 //remove user from db
 router.delete('/users/:id', (req, res) => {
     console.log('Deleting: ' + req.params.id);
@@ -183,10 +184,10 @@ router.delete('/users/:id', (req, res) => {
     }).catch(err => res.status(400).send(err));
 });
 
-//update a user in db
-// router.put('/users:id', (req, res) => {
-//     res.send({type: 'PUT'});
-// });
+router.get('/Excercies', (req, res) => {
+  console.log("here")
+  res.render('../frontEnd/views/Exercises')
+});
 
 
 module.exports = router;
