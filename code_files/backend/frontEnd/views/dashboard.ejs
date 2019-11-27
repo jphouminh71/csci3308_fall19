@@ -147,7 +147,7 @@
                       <div class="form-group">
                             <label>Target Weight</label>
                             <input id="targetweight" type="text" class="form-control" name="targetweight" placeholder="ex. 165lbs" value ="<%= stats.targetweight %>"></input>
-                        </div>    
+                        </div>
                       <div class="form-group">
                         <button type="submit" id="statSubmit" class="btn btn-primary">Submit Stats</button>
                       </div>
@@ -303,7 +303,7 @@
         <br></br>
         <h5> Your Weight Loss Goal Progress </h5>
         <div class="progress" style="height: 20px;">
-          <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-info" role="progressbar" style="width: <%=(stats.targetweight/stats.weight)*100%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div>
 </body>
