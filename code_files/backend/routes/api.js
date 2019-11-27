@@ -184,8 +184,7 @@ router.delete('/users/:id', (req, res) => {
     }).catch(err => res.status(400).send(err));
 });
 
-router.get('/Excercies', (req, res) => {
-  console.log("here")
+router.get('/Excercises', (req, res) => {
   res.render('../frontEnd/views/Exercises')
 });
 
