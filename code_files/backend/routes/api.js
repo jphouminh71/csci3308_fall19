@@ -60,7 +60,7 @@ var storage = multer.diskStorage({
       callback(null, file.fieldname + '-' + file.originalname)
     }
   });
-  
+
 var upload = multer({ storage: storage });
 
 //get list of users - TA said this should work
@@ -147,7 +147,7 @@ router.post('/dashboard', verify, (req, res) => {
             } else {
                 //edge case, fix here!
             }
-            
+
         } else {
             User_Personal.findOne({username: user.username}).then(function(personal_stats) {
                 findStats(req.session.username, function(err, stats) {
@@ -162,7 +162,7 @@ router.post('/dashboard', verify, (req, res) => {
 });
 
 router.post('/dashboard/avatar', upload.single('avatar'), (req, res) => {
-    User_Personal.findOneAndUpdate({username: req.session.username}, 
+    User_Personal.findOneAndUpdate({username: req.session.username},
         {$set:{img_src: '<img src="/static/uploads/'+ req.file.filename +'" class="image" id="mypic" alt="defaultpic">'}},
         {new: true, upsert: true})
         .then(function(personal_stats) {
@@ -187,5 +187,6 @@ router.delete('/users/:id', (req, res) => {
 // router.put('/users:id', (req, res) => {
 //     res.send({type: 'PUT'});
 // });
+
 
 module.exports = router;
