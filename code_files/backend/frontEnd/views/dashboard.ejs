@@ -186,6 +186,50 @@
                 </tbody>
             </table>
         </div>
+        <button type="button" class = "btn btn-primary" data-toggle = "modal" data-target="#food_modal">Enter Food Intake</button>
+        <div class="modal fade" id = "food_modal">
+              <div class="modal-dialog modal-login">
+                  <div class = "modal-content">
+                      <div class = "modal-header">
+                          <h4 class = "modal-title"> Enter for your caloric intake</h4>
+                          <button type="button" class ="close" data-dismiss="modal">x</button>
+                      </div>
+                      <form method="POST" action="/api/dashboard">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Sunday</label>
+                                <input type="text" id ="sunday" class="form-control" name="fod_sunday" placeholder="2500 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Monday</label>
+                                <input type="text" id ="monday" class="form-control" name="fod_sunday" placeholder="2000 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Tuesday</label>
+                                <input type="text" id ="tuesday" class="form-control" name="fod_sunday" placeholder="3000 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Wednesday</label>
+                                <input type="text" id ="wednesday" class="form-control" name="fod_sunday" placeholder="2250 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Thursday</label>
+                                <input type="text" id ="thursday" class="form-control" name="fod_sunday" placeholder="2000 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Friday</label>
+                                <input type="text" id ="friday" class="form-control" name="fod_sunday" placeholder="1800 Calories"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Saturday</label>
+                                <input type="text" id ="saturday" class="form-control" name="fod_sunday" placeholder="3000 Calories"></input>
+                            </div>
+                        </div>
+                        <input type="hidden" name ="_method" value = "put">
+                      </form>
+                  </div>
+              </div>
+            </div>
         <div class="tableFixHead">
             <table class="table" id="second">
                 <thead class="thead-dark">
