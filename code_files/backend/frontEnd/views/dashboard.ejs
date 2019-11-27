@@ -170,22 +170,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="tableFixHead">
-            <table class="table" id="second">
-                <thead class="thead-dark">
-                    <tr><th>Day</th><th>Caloric Intake</th><th>Daily Total</th></tr>
-                </thead>
-                <tbody class="p-3 mb-2 bg-info text-body">
-                    <tr><td>Sunday</td><td>A1</td><td>A2</td></tr>
-                    <tr><td>Monday</td><td>A1</td><td>A2</td></tr>
-                    <tr><td>Tuesday</td><td>B1</td><td>B2</td></tr>
-                    <tr><td>Wednesday</td><td>C1</td><td>C2</td></tr>
-                    <tr><td>Thursday</td><td>D1</td><td>D2</td></tr>
-                    <tr><td>Friday</td><td>E1</td><td>E2</td></tr>
-                    <tr><td>Saturday</td><td>A1</td><td>A2</td></tr>
-                </tbody>
-            </table>
-        </div>
+
         <button type="button" class = "btn btn-primary" data-toggle = "modal" data-target="#food_modal">Enter Food Intake</button>
         <div class="modal fade" id = "food_modal">
               <div class="modal-dialog modal-login">
@@ -224,12 +209,31 @@
                                 <label>Saturday</label>
                                 <input type="text" id ="saturday" class="form-control" name="fod_sunday" placeholder="3000 Calories"></input>
                             </div>
+                            <div class="form-group">
+                                <button type="submit" id="sumbitFood" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                         <input type="hidden" name ="_method" value = "put">
                       </form>
                   </div>
               </div>
             </div>
+        <div class="tableFixHead">
+            <table class="table" id="second">
+                <thead class="thead-dark">
+                    <tr><th>Day</th><th>Caloric Intake</th><th>Daily Total</th></tr>
+                </thead>
+                <tbody class="p-3 mb-2 bg-info text-body">
+                    <tr><td>Sunday</td><td>A1</td><td>A2</td></tr>
+                    <tr><td>Monday</td><td>A1</td><td>A2</td></tr>
+                    <tr><td>Tuesday</td><td>B1</td><td>B2</td></tr>
+                    <tr><td>Wednesday</td><td>C1</td><td>C2</td></tr>
+                    <tr><td>Thursday</td><td>D1</td><td>D2</td></tr>
+                    <tr><td>Friday</td><td>E1</td><td>E2</td></tr>
+                    <tr><td>Saturday</td><td>A1</td><td>A2</td></tr>
+                </tbody>
+            </table>
+        </div>
         <div class="tableFixHead">
             <table class="table" id="second">
                 <thead class="thead-dark">
