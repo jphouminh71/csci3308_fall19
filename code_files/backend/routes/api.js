@@ -186,6 +186,7 @@ router.delete('/users/:id', (req, res) => {
 
 router.get('/Excercises', (req, res) => {
   res.render('../frontEnd/views/Exercises')
+  res.end();
 });
 
 
