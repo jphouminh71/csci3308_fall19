@@ -127,14 +127,15 @@ router.post('/dashboard', verify, (req, res) => {
                     info.name = req.body.name;
                     res.render('../frontEnd/views/dashboard', {user: user, self: info});
                 });
-            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender) {
-                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender}})
+            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.targetweight) {
+                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender, targetweight: req.body.targetweight}})
                 .then(function(info){
                     findPersonal(req.session.username, function(err, personal_stats) {
                         info.height = req.body.height;
                         info.weight = req.body.weight;
                         info.age = req.body.age;
                         info.gender = req.body.gender;
+                        info.targetweight = req.body.targetweight;
                         res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
                     });
                 });
