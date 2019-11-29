@@ -8,6 +8,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel=stylesheet href="/static/css/dashStyle.css">
     <meta charset="UTF-8">
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#sumbitFood').click(function(){
+                var databack_su = $("#food_modal #sunday").val().trim();
+                    $('#su_cals').html(databack_su);
+                var databack_mo = $("#food_modal #monday").val().trim();
+                    $('#mo_cals').html(databack_mo);
+                var databack_tu = $("#food_modal #tuesday").val().trim();
+                    $('#tu_cals').html(databack_tu);
+                var databack_we = $("#food_modal #wednesday").val().trim();
+                    $('#we_cals').html(databack_we);
+                var databack_th = $("#food_modal #thursday").val().trim();
+                    $('#th_cals').html(databack_th);
+                var databack_fr = $("#food_modal #friday").val().trim();
+                    $('#fr_cals').html(databack_fr);
+                var databack_sa = $("#food_modal #saturday").val().trim();
+                    $('#sa_cals').html(databack_sa);
+            });
+        });
+
+        $(document).ready(function(){
+            $('#sumbitWater').click(function(){
+                var databack_1 = $("#water_modal #sunday").val().trim();
+                    $('#su_wat').html(databack_1);
+                var databack_2 = $("#water_modal #monday").val().trim();
+                    $('#mo_wat').html(databack_2);
+                var databack_3 = $("#water_modal #tuesday").val().trim();
+                    $('#tu_wat').html(databack_3);
+                var databack_4 = $("#water_modal #wednesday").val().trim();
+                    $('#we_wat').html(databack_4);
+                var databack_5 = $("#water_modal #thursday").val().trim();
+                    $('#th_wat').html(databack_5);
+                var databack_6 = $("#water_modal #friday").val().trim();
+                    $('#fr_wat').html(databack_6);
+                var databack_7 = $("#water_modal #saturday").val().trim();
+                    $('#sa_wat').html(databack_7);
+            });
+        });
+    </script>
+
     <title>Dashboard</title>
 </head>
 
@@ -25,7 +66,7 @@
                 <ul class="nav navbar-nav list-inline">
                 <li class="list-inline-item"><form id="navlink2" method="GET" action="/api/Excercises"><a href="#" style="color:black" onclick="document.getElementById('navlink2').submit()">Exercises</a></form></li>
                 <li class="list-inline-item"><form id="navlink3" method="POST" action="/api/dashboard">
-                                      <a href="#" type="submit" style="color:black" onclick="document.getElementById('navlink3').submit()">Dashboard</a></form></li>
+                                    <!--  <a href="#" type="submit" style="color:black" onclick="document.getElementById('navlink3').submit()">Dashboard</a></form></li> -->
                 <li class="active list-inline-item"><form id="navlink1" method="GET" action="/"><a href="#" style="color:black" onclick="document.getElementById('navlink1').submit()">Sign Out</a></form></li> <!-- These all need to be linked -->
 
                 <!-- <li class="list-inline-item"><a href="#" style="color:white">Community</a></li> -->
@@ -214,7 +255,7 @@
                                 <input type="text" id ="saturday" class="form-control" name="fod_sunday" placeholder="3000 Calories"></input>
                             </div>
                             <div class="form-group">
-                                <button type="submit" id="sumbitFood" class="btn btn-primary">Submit</button>
+                                <button type="button" id="sumbitFood" class="btn btn-danger" data-dismiss="modal">Submit</button>
                             </div>
                         </div>
                         <input type="hidden" name ="_method" value = "put">
@@ -228,13 +269,13 @@
                     <tr><th>Day</th><th>Caloric Intake (CALORIES)</th><th>Daily Total (CALORIES)</th></tr>
                 </thead>
                 <tbody class="p-3 mb-2 bg-info text-body">
-                    <tr><td>Sunday</td><td>A1</td><td>2000</td></tr>
-                    <tr><td>Monday</td><td>A1</td><td>2000</td></tr>
-                    <tr><td>Tuesday</td><td>B1</td><td>2000</td></tr>
-                    <tr><td>Wednesday</td><td>C1</td><td>2000</td></tr>
-                    <tr><td>Thursday</td><td>D1</td><td>2000</td></tr>
-                    <tr><td>Friday</td><td>E1</td><td>2000</td></tr>
-                    <tr><td>Saturday</td><td>A1</td><td>2000</td></tr>
+                    <tr><td>Sunday</td><td><div id = "su_cals"></td><td>2000</td></tr>
+                    <tr><td>Monday</td><td><div id = "mo_cals"></td><td>2000</td></tr>
+                    <tr><td>Tuesday</td><td><div id = "tu_cals"></td><td>2000</td></tr>
+                    <tr><td>Wednesday</td><td><div id = "we_cals"></td><td>2000</td></tr>
+                    <tr><td>Thursday</td><td><div id = "th_cals"></td><td>2000</td></tr>
+                    <tr><td>Friday</td><td><div id = "fr_cals"></td><td>2000</td></tr>
+                    <tr><td>Saturday</td><td><div id = "sa_cals"></td><td>2000</td></tr>
                 </tbody>
             </table>
         </div>
@@ -277,7 +318,7 @@
                                 <input type="text" id ="saturday" class="form-control" name="fod_sunday" placeholder="10 cups"></input>
                             </div>
                             <div class="form-group">
-                                <button type="submit" id="sumbitFood" class="btn btn-primary">Submit</button>
+                               <button type="button" id="sumbitWater" class="btn btn-danger" data-dismiss="modal">Submit</button>
                             </div>
                         </div>
                         <input type="hidden" name ="_method" value = "put">
@@ -291,13 +332,13 @@
                     <tr><th>Day</th><th>Water Intake</th><th>Daily Total (cups)</th></tr>
                 </thead>
                 <tbody class="p-3 mb-2 bg-info text-body">
-                  <tr><td>Sunday</td><td>A1</td><td>15.5</td></tr>
-                  <tr><td>Monday</td><td>A1</td><td>15.5</td></tr>
-                  <tr><td>Tuesday</td><td>B1</td><td>15.5</td></tr>
-                  <tr><td>Wednesday</td><td>C1</td><td>15.5</td></tr>
-                  <tr><td>Thursday</td><td>D1</td><td>15.5</td></tr>
-                  <tr><td>Friday</td><td>E1</td><td>15.5</td></tr>
-                  <tr><td>Saturday</td><td>A1</td><td>15.5</td></tr>
+                  <tr><td>Sunday</td><td><div id = "su_wat"></td><td>15.5</td></tr>
+                  <tr><td>Monday</td><td><div id = "mo_wat"></td><td>15.5</td></tr>
+                  <tr><td>Tuesday</td><td><div id = "tu_wat"></td><td>15.5</td></tr>
+                  <tr><td>Wednesday</td><td><div id = "we_wat"></td><td>15.5</td></tr>
+                  <tr><td>Thursday</td><td><div id = "th_wat"></td><td>15.5</td></tr>
+                  <tr><td>Friday</td><td><div id = "fr_wat"></td><td>15.5</td></tr>
+                  <tr><td>Saturday</td><td><div id = "sa_wat"></td><td>15.5</td></tr>
                 </tbody>
             </table>
         </div>
