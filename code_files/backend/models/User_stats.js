@@ -25,6 +25,11 @@ const statsSchema = new mongoose.Schema({
         required: false,
         default: 0
     },
+    weightGoal: {
+        type: Number,
+        required: false,
+        default: 1000
+    },
     bench: {
         type: Number,
         required: false,

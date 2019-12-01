@@ -99,6 +99,20 @@ router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontEnd/views/login.html'));
 });
 
+router.get('/signin', (req, res) => {
+    if (req.session.username){
+        findUser(req.session.username, function(err, user){
+            findPersonal(req.session.username, function(err, personal_stats){
+                findStats(req.session.username, function(err, stats){
+                    res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
+                });
+            });
+        });
+    } else {
+        res.redirect('/');
+    }
+});
+
 // when a post request is sent from the client from signing it will fire this function
 router.post('/signin', async(req, res) => {
     const user = await User.findOne({ username: req.body.username });
@@ -129,8 +143,9 @@ router.post('/dashboard', verify, (req, res) => {
                         res.render('../frontEnd/views/dashboard', {user: user, self: info, stats: stats});
                     });
                 });
-            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.bench) {
-                User_Stats.findOneAndUpdate({username: req.session.username}, {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender, bench: req.body.bench}})
+            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.bench || req.body.goalWeight) {
+                User_Stats.findOneAndUpdate({username: req.session.username}, 
+                    {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender, weightGoal: req.body.weightGoal, bench: req.body.bench}})
                 .then(function(info){
                     findPersonal(req.session.username, function(err, personal_stats) {
                         info.height = req.body.height;
@@ -138,6 +153,7 @@ router.post('/dashboard', verify, (req, res) => {
                         info.age = req.body.age;
                         info.gender = req.body.gender;
                         info.bench = req.body.bench;
+                        info.goalWeight = req.body.weightGoal;
                         res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
                     });
                 });
@@ -180,6 +196,13 @@ router.delete('/users/:id', (req, res) => {
 router.get('/Excercises', (req, res) => {
   res.render('../frontEnd/views/Exercises')
   res.end();
+});
+
+router.get('/signout', (req, res) => {
+    if (req.session){
+        req.session.destroy;
+    }
+    res.redirect('/');
 });
 
 
