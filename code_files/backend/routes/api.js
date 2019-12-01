@@ -143,7 +143,7 @@ router.post('/dashboard', verify, (req, res) => {
                         res.render('../frontEnd/views/dashboard', {user: user, self: info, stats: stats});
                     });
                 });
-            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.bench || req.body.goalWeight) {
+            } else if (req.body.height || req.body.weight || req.body.age || req.body.gender || req.body.bench || req.body.weightGoal) {
                 User_Stats.findOneAndUpdate({username: req.session.username}, 
                     {$set:{height: req.body.height, weight: req.body.weight, age: req.body.age, gender: req.body.gender, weightGoal: req.body.weightGoal, bench: req.body.bench}})
                 .then(function(info){
@@ -153,7 +153,7 @@ router.post('/dashboard', verify, (req, res) => {
                         info.age = req.body.age;
                         info.gender = req.body.gender;
                         info.bench = req.body.bench;
-                        info.goalWeight = req.body.weightGoal;
+                        info.weightGoal = req.body.weightGoal;
                         res.render('../frontEnd/views/dashboard', {user: user, self: personal_stats, stats: info});
                     });
                 });
@@ -169,6 +169,20 @@ router.post('/dashboard', verify, (req, res) => {
             });
         }
     });
+});
+
+router.get('/dashboard', (req, res) => {
+    if (req.session.username){
+        findUser(req.session.username, function(err, user){
+            findPersonal(req.session.username, function(err, personal_stats){
+                findStats(req.session.username, function(err, stats){
+                    res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
+                });
+            });
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 router.post('/dashboard/avatar', upload.single('avatar'), (req, res) => {
