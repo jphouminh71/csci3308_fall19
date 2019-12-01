@@ -96,7 +96,17 @@ router.post('/register', async(req, res) => {
 
 //go to login page
 router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontEnd/views/login.html'));
+    if (req.session.username) {
+        findUser(req.session.username, function(err, user) {
+            findPersonal(req.session.username, function(err, personal_stats){
+                findStats(req.session.username, function(err, stats){
+                    res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
+                });
+            });
+        });
+    } else {
+        res.sendFile(path.join(__dirname, '../frontEnd/views/login.html'));
+    }
 });
 
 router.get('/signin', (req, res) => {
@@ -115,8 +125,17 @@ router.get('/signin', (req, res) => {
 
 // when a post request is sent from the client from signing it will fire this function
 router.post('/signin', async(req, res) => {
-    const user = await User.findOne({ username: req.body.username });
-    if(user) {       // if there is a user direct to the dashboard
+    if (req.session.username) {
+        findUser(req.session.username, function(err, user) {
+            findPersonal(req.session.username, function(err, personal_stats){
+                findStats(req.session.username, function(err, stats){
+                    res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal_stats, stats: stats});
+                });
+            });
+        });
+    } else {
+        const user = await User.findOne({ username: req.body.username });
+        if(user) {       // if there is a user direct to the dashboard
         const personal = await User_Personal.findById({_id: user._id});
         const stats = await User_Stats.findById({_id: user._id});
 
@@ -127,8 +146,9 @@ router.post('/signin', async(req, res) => {
             req.session.username = req.body.username;
         }
         res.render(path.join(__dirname, '../frontEnd/views/dashboard'), {user: user, self: personal, stats: stats});
-    } else          // send error message
-        return res.status(400).send('Username or Password is Incorrect');
+        } else          // send error message
+            return res.status(400).send('Username or Password is Incorrect');
+    }
 });
 
 router.post('/dashboard', verify, (req, res) => {
@@ -212,11 +232,8 @@ router.get('/Excercises', (req, res) => {
   res.end();
 });
 
-router.get('/signout', (req, res) => {
-    if (req.session){
-        req.session.destroy;
-    }
-    res.redirect('/');
+router.post('/signout', (req, res) => {
+    req.session.destroy((err) => res.redirect('/'));
 });
 
 
