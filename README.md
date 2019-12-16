@@ -15,4 +15,4 @@ they have some direction in their exercises.
 ```
 node server.js
 ```
-  To view locally go to "http://localhost:5000/" to view the homepage and navigate to the login/signup page
+  To view locally go to "http://localhost:5000/" to view the homepage after running the previous command and navigate to the login/signup page
